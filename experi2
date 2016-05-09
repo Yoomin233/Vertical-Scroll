@@ -1,0 +1,43 @@
+ <html>
+ <head>
+ <style>
+div.outer{
+	margin:100px auto;
+	height: 20px;
+	width: 200px;
+	outline: 1px solid black;
+	overflow: hidden;
+}
+p{
+	margin: 0;
+	padding: 0;
+	line-height: 20px;
+}
+ </style>
+ <!-- <script src="js/layer-v2.2/layer/Layer.js"></script> -->
+ </head>
+ <body>
+<div class="outer" id="investShow">
+	<p class="inner">111</p>
+	<p class="inner">112</p>
+	<p class="inner">113</p>
+	<p class="inner">114</p>
+	<p class="inner">115</p>
+
+	<p class="inner">116</p>
+
+	<p class="inner">117</p>
+
+</div>
+
+<script>
+var box=document.getElementById("investShow"),autoScroll=true;
+box.onmouseover=function(){autoScroll=false};
+box.onmouseout=function(){autoScroll=true};
+new function (){
+ var stop=box.scrollTop%20==0&&!autoScroll;//只有当【scrollTop为20的整数倍】和【autoScroll为false】这两个条件同时满足时，stop才会被触发
+ setTimeout(arguments.callee,box.scrollTop%20?10:150);
+};
+</script>
+ </body>
+ </html>
