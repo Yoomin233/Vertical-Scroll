@@ -36,7 +36,8 @@ box.onmouseover=function(){autoScroll=false};
 box.onmouseout=function(){autoScroll=true};
 new function (){
  var stop=box.scrollTop%20==0&&!autoScroll;//只有当【scrollTop为20的整数倍】和【autoScroll为false】这两个条件同时满足时，stop才会被触发
- setTimeout(arguments.callee,box.scrollTop%20?10:150);
+ if(!stop)box.scrollTop==parseInt(box.scrollHeight)-20?box.scrollTop=0:box.scrollTop++;//如果box已经滚动到顶部，则归位(scrollTop=0);否则scrollTop递增
+ setTimeout(arguments.callee,box.scrollTop%20?10:150);//调用自身，如果scrollTop为20整倍数（对应内容正好显示在中间），则停顿150ms；否则每隔10ms调用一次（scrollTop递增）
 };
 </script>
  </body>
